@@ -4,7 +4,7 @@ var heightElem = document.getElementById("height");
 var formElem = document.getElementById("draw-form");
 
 // set a handler function for the form's submission event
-formElem.onsubmit = function(event) {
+formElem.onchange = function(event) {
 
     // QUIZ
     // what happens if we don't do this?
@@ -25,31 +25,7 @@ formElem.onsubmit = function(event) {
     // convert the string to an int
     height = parseInt(heightStr);
 
-    // if the height is not-a-number, yell at them and exit early
-    // TODO 2
-    // negative numbers and zero should also be rejected here
-    if (heightStr.length < 1) {
-        displayError("Please provide a height.");
-        return;
-    }
 
-    // if (height < 1) {
-        // displayError("That's not a valid height.");
-        // return;
-    // }
-    
-    if (isNaN(height) || (height < 1)) {
-        displayError("That's not a valid height.");
-        return;
-    }
-
-
-    // if the height is absurdly tall, yell at them and exit early
-    var tooTall = 100;
-    if (height > tooTall) {
-        displayError("Are you cray? I can't build a pyramid that tall.");
-        return;
-    }
 
     // draw pyramid with the specified height
     drawPyramid(height);
@@ -91,6 +67,11 @@ function drawPyramid(height) {
     // first, clear the old content
     document.getElementById("pyramid").innerHTML = "";
 
+
+
+    
+    // var formElem = document.getElementById("draw-form");
+
     // for each row....
     for (var row = 0; row < height; row++) {
 
@@ -105,7 +86,9 @@ function drawPyramid(height) {
             rowStr += spaceChar;
         }
         for (var i = 0; i < numBricks; i++) {
-            rowStr += "#";
+            // determines what symbol the user chose
+            var formSymbol = document.getElementById("symbol");
+            rowStr += formSymbol.value;
         }
 
         // make a <p> element for this row, and insert it into the #pyramid container
