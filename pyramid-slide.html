@@ -2,9 +2,24 @@
 <html>
 <head>
     <style>
+        #app {
+            
+            background-color: #DCDCDC;
+            border: 2px solid palevioletred;
+        }
+        
         #pyramid {
             line-height: 0;
             font-size: 30px;
+            color: palevioletred;
+
+        }
+
+        #title {
+            font-family: "Courier New", monospace;
+            color: white;
+            background-color: palevioletred;
+            padding: 30px;
         }
 
         body {
@@ -12,18 +27,23 @@
             text-align: center;
         }
 
-        .invalid-field {
-            border: 1px solid red;
+        #draw-form {
+            background-color: #C0C0C0;
+            padding: 30px;
         }
 
-        .error-message {
-            color: red;
+        #display-height { 
+            font-weight: bold;
         }
+
+
     </style>
 </head>
 <body>
-    <h1>Pyramid Slide</h1>
+    <h1 id="title">Pyramid Slide</h1>
     <br>
+
+    <div id="app">
 
     <form id="draw-form">
         <table>
@@ -37,11 +57,12 @@
                     <option value="$">$</option>
                     </select>
                 </label>
-                <br><br>
+                &nbsp;
                 <label>
                     How high?
                     <input type="range" id="height" name="height" min="1" max="20"/>
-                    <label class="error-message">
+                    <label id="display-height" class="display-height" value="">
+                     <output type="text" id="displayHeight" value="">
                         <!-- If there was a user error, we will put a message in here -->
                     </label>
                 </label>
@@ -53,6 +74,8 @@
     <br><br>
 
     <div id="pyramid"></div>
+    
+    </div>
 
     <script src="pyramid-slide.js"></script>
 </body>

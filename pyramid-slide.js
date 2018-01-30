@@ -6,20 +6,16 @@ var formElem = document.getElementById("draw-form");
 // set a handler function for the form's submission event
 formElem.onchange = function(event) {
 
-    // QUIZ
-    // what happens if we don't do this?
+    console.log(heightElem.value)
+
     event.preventDefault();
 
-    // QUIZ
-    // what happens if we don't do this?
-    clearError();
+
+    displayHeight(heightElem.value);
+    
 
     // figure out the height the user typed
     heightStr = heightElem.value;
-
-    // TODO 1
-    // if they didn't type anything at all, give a different error message,
-    // something like "Please provide a height"
 
 
     // convert the string to an int
@@ -31,28 +27,10 @@ formElem.onchange = function(event) {
     drawPyramid(height);
 }
 
-
-/**
- * displayError
- *
- * Displays an error message on the text input, and colors it red
- */
-function displayError(message) {
-    heightElem.className = "invalid-field";
-    document.querySelector(".error-message").innerHTML = message;
-}
-
-
-/*
- * clearError
- *
- * Undisplays the error message and removes the red CSS style
- */
-function clearError(message) {
-    // TODO 3
-    // implement this function.
-    document.querySelector(".error-message").innerHTML = "";
-    
+// display the height of the pyramid next to the slider
+function displayHeight(height) {
+    heightElem.className = "displayHeight";
+    document.getElementById('displayHeight').value=height;
 }
 
 
